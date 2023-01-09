@@ -1,0 +1,38 @@
+h1 {
+  color: blue;
+  padding-top: 30px;
+}
+
+p {
+  color: azure;
+}
+
+.uno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 915px;
+  height: 824px;
+  background-image: url("./img/dibujo.png");
+  position: relative;
+}
+
+.imgLeftTop {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.imgRightBottom {
+  width: 915px;
+  height: 150px;
+  display: flex;
+  justify-content: end;
+  position: absolute;
+  bottom: 25px;
+}
+
+.entrada {
+  margin-top: 45px;
+  margin-right: 200px;
+}

@@ -1,17 +1,27 @@
 import axios from 'axios'
 import './sentences.css';
-import { useState, useEffect } from 'react'
-import imgLeftTop from "./img/romantiv02.png"
-import imgRightBottom from "./img/romantiv01.png"
+import { useState, useEffect, useRef } from 'react'
+import imgLeftTop from "../resources/img/romantiv02.png"
+import imgRightBottom from "../resources/img/romantiv01.png"
+import imgIntroBar from "../resources/img/linea.png"
 
 
 const Sentences = () => {
+    const [intro, showIntro] = useState(true)
     const [text, setText] = useState([])
     const [newNote, setNewNote] = useState('') 
+    const romantiv = useRef(null)
 
     useEffect(() => {
+        setTimeout(() => {
+          showIntro(false)
+          setTimeout(() => {romantiv.current.focus()}, 2000)
+          //¿a really bad solution while I learn front-end animations?
+        }, 4000)
+        
         axios.get('http://localhost:3001/sentences')
         .then(response => {setText(response.data)})
+
     },[])
 
     const addNote = (event) => {   
@@ -31,26 +41,44 @@ const Sentences = () => {
 
     const handleNoteChange = (event) => {
       console.log(event.target.value)
-      setNewNote(event.target.value)
+      setNewNote(event.target.value.toUpperCase())
     }
 
   return (
-    <div >
-      <div className='imgLeftTop'>
-        <img src={imgLeftTop} alt="imgLeftTop"></img>
-        <form onSubmit={addNote} className="entrada">
-         <input placeholder="Write.." value={newNote} onChange={handleNoteChange} />
-         <button type="submit">print</button>
-        </form> 
-      </div>
-      <div className="uno">
+    <div>
 
-      <p>{text.map(a => <span key={a.id}>{a.content} </span>)}</p>
+    
+      {intro ? 
+      <div className='introBar'>
+        <img src={imgIntroBar} alt="imgIntroBar"/>
+      </div>
+      :
+      <div className='mainContent'>
 
-      <div className='imgRightBottom'>
-        <img src={imgRightBottom} alt="imgRightBottom"></img>
-      </div>
-      </div>
+        <div className='imgLeftTop'>
+          <img src={imgLeftTop} alt="imgLeftTop"></img>
+        </div>
+
+        <div className='marqui'>
+
+          <form onSubmit={addNote}>
+
+            <p>
+              {text.map(a => <span key={a.id}>{a.content} </span>)}
+              <input className='writingField' type={text} value={newNote} onChange={handleNoteChange} ref={romantiv}/>
+              <button type="submit">ROMANTIV</button>
+            </p>
+            
+          </form> 
+
+        </div>
+
+
+        <div className='imgRightBottom'>
+          <img src={imgRightBottom} alt="imgRightBottom"></img>
+        </div>
+        
+      </div>}
     </div>
   );
 }

@@ -20,6 +20,12 @@
   }
 }
 
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .introBar {
   transition: all 2.4s 0.4s ease;
   animation-name: barIntro;
@@ -37,18 +43,34 @@
   transition: all 2s ease;
   animation-name: mainIntro;
   animation-duration: 2s;
-  width: 100vw;
+  width: 100%;
 }
 
-.imgLeftTop {
+.logos {
   display: flex;
   justify-content: space-between;
-  height: 100px;
 }
 
-.marqui {
-  display: flex;
-  flex-direction: row;
+.imgRightBottom {
+  position: absolute;
+  margin-top: 972px;
+  right: 0;
+}
+
+.imgRightBottom img {
+  width: 200px;
+}
+
+.secondContent {
+  min-height: 824px;
+  background-image: url("../resources/img/dibujo.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 45;
+}
+p,
+span {
+  color: blue;
 }
 
 .writingField {
@@ -56,13 +78,4 @@
   border: none;
   background-color: rgb(0, 0, 0);
   color: blue;
-}
-
-.imgRightBottom {
-  width: 915px;
-  height: 150px;
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  bottom: 25px;
 }

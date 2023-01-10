@@ -6,6 +6,7 @@ import imgRightBottom from "../resources/img/romantiv01.png"
 import imgIntroBar from "../resources/img/linea.png"
 
 
+
 const Sentences = () => {
     const [intro, showIntro] = useState(true)
     const [text, setText] = useState([])
@@ -54,30 +55,23 @@ const Sentences = () => {
       </div>
       :
       <div className='mainContent'>
-
+        <div className='logos'>
         <div className='imgLeftTop'>
           <img src={imgLeftTop} alt="imgLeftTop"></img>
         </div>
-
-        <div className='marqui'>
-
+        <div className='imgRightBottom'>
+          <img src={imgRightBottom} alt="imgRightBottom"></img>
+        </div>
+        </div>
+        <div className='secondContent'>
           <form onSubmit={addNote}>
-
             <p>
               {text.map(a => <span key={a.id}>{a.content} </span>)}
               <input className='writingField' type={text} value={newNote} onChange={handleNoteChange} ref={romantiv}/>
               <button type="submit">ROMANTIV</button>
             </p>
-            
           </form> 
-
         </div>
-
-
-        <div className='imgRightBottom'>
-          <img src={imgRightBottom} alt="imgRightBottom"></img>
-        </div>
-        
       </div>}
     </div>
   );

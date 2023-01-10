@@ -68,7 +68,7 @@ const Sentences = () => {
             <p>
               {text.map(a => <span key={a.id}>{a.content} </span>)}
               <input className='writingField' type={text} value={newNote} onChange={handleNoteChange} ref={romantiv}/>
-              <button type="submit">ROMANTIV</button>
+              <button className="romantiv" type="submit"></button>
             </p>
           </form> 
         </div>

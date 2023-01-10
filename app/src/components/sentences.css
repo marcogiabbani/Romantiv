@@ -76,6 +76,16 @@ span {
 .writingField {
   outline: none;
   border: none;
+  height: 2rem;
+  font-size: 2rem;
   background-color: rgb(0, 0, 0);
   color: blue;
+}
+
+.romantiv {
+  background: #000000;
+  color: blue;
+  border-style: none;
+  text-shadow: none;
+  cursor: pointer;
 }

@@ -20,10 +20,18 @@
   }
 }
 
+@font-face {
+  font-family: "Perpetua";
+  src: local("Perpetua"),
+    url("../resources/fonts/Perpetua.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   width: 100%;
   height: 100%;
+  font-family: "Perpetua";
+  font-size: 1.5em;
 }
 
 .introBar {
@@ -80,6 +88,7 @@ span {
   font-size: 2rem;
   background-color: rgb(0, 0, 0);
   color: blue;
+  font-family: "Perpetua";
 }
 
 .romantiv {

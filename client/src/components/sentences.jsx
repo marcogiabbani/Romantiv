@@ -20,7 +20,7 @@ const Sentences = () => {
           //¿a really bad solution while I learn front-end animations?
         }, 4000)
         
-        axios.get('http://localhost:3001/sentences')
+        axios.get('http://localhost:3001/api/sentences')
         .then(response => {setText(response.data)})
 
     },[])
@@ -33,7 +33,7 @@ const Sentences = () => {
         important: Math.random() < 0.5,
       }
       axios
-      .post('http://localhost:3001/sentences', noteObject)
+      .post('http://localhost:3001/api/sentences', noteObject)
       .then(response => {
         setText(text.concat(response.data))
         setNewNote('')

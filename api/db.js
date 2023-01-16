@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const {Sequelize} = require('sequelize');
 
 const SentenceModel = require('./models/sentences')
 
@@ -13,3 +13,7 @@ sequelize.sync({force: false})
     .then(() => {
         console.log('Tablas sincronizadas')
     })
+
+module.exports = {
+    Sentence
+}

@@ -27,7 +27,16 @@ const Sentences = () => {
 
     const addNote = (event) => {   
       event.preventDefault()
-      if (message !== "") {
+      if (message === "HOLAMANOLA") {
+          axios.delete('http://localhost:3001/api/sentences', {})
+            .then(response => {
+              setMessage('')
+              setText([])
+            })
+          console.log("deberia biorra")
+        
+        }
+      if (message !== "" && message !== "HOLAMANOLA") {
         const newMessage = {
           message: message,
         }

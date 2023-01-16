@@ -10,7 +10,7 @@ import imgIntroBar from "../resources/img/linea.png"
 const Sentences = () => {
     const [intro, showIntro] = useState(true)
     const [text, setText] = useState([])
-    const [newNote, setNewNote] = useState('') 
+    const [message, setMessage] = useState('') 
     const romantiv = useRef(null)
 
     useEffect(() => {
@@ -21,34 +21,33 @@ const Sentences = () => {
         }, 4000)
         
         axios.get('http://localhost:3001/api/sentences')
-        .then(response => {setText(response.data)})
+          .then(response => {setText(response.data)})
 
     },[])
 
     const addNote = (event) => {   
       event.preventDefault()
-      const noteObject = {
-        content: newNote,
-        date: new Date().toISOString(),
-        important: Math.random() < 0.5,
-      }
-      axios
-      .post('http://localhost:3001/api/sentences', noteObject)
-      .then(response => {
-        setText(text.concat(response.data))
-        setNewNote('')
-      })
+      if (message !== "") {
+        const newMessage = {
+          message: message,
+        }
+        axios.post('http://localhost:3001/api/sentences', newMessage)
+          .then(response => {
+            setText(text.concat(response.data))
+            setMessage('')
+          })
+          .catch("Error while trying to add new text")
+    }
     }
 
     const handleNoteChange = (event) => {
       console.log(event.target.value)
-      setNewNote(event.target.value.toUpperCase())
+      setMessage(event.target.value.toUpperCase())
     }
 
   return (
     <div>
 
-    
       {intro ? 
       <div className='introBar'>
         <img src={imgIntroBar} alt="imgIntroBar"/>
@@ -66,8 +65,8 @@ const Sentences = () => {
         <div className='secondContent'>
           <form onSubmit={addNote}>
             <p>
-              {text.map(a => <span key={a.id}>{a.content} </span>)}
-              <input className='writingField' type={text} value={newNote} onChange={handleNoteChange} ref={romantiv}/>
+              {text.map(a => <span key={a.id}>{a.message} </span>)}
+              <input className='writingField' type={text} value={message} onChange={handleNoteChange} ref={romantiv}/>
               <button className="romantiv" type="submit"></button>
             </p>
           </form> 

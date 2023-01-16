@@ -33,12 +33,5 @@ router.delete('/', async (req, res) => {
     }
 })
 
-/**
- * para destruir todas los registros de la tabla?
- *  db.User.destroy({
- *    where: {},
- *    truncate: true
- *  })
- */
 
 module.exports = router;

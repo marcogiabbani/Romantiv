@@ -1,9 +1,14 @@
 const {Sequelize} = require('sequelize');
+require('dotenv').config()
 
+console.log()
 const SentenceModel = require('./models/sentences')
 
-const sequelize = new Sequelize("romantiv", 'root', '5991', {
-    host: 'localhost',
+const sequelize = new Sequelize(
+        process.env.DATABASE_NAME,
+        process.env.DB_USERNAME,
+        process.env.DB_PASSWORD, {
+    host: process.env.HOST,
     dialect: 'mysql'
 })
 

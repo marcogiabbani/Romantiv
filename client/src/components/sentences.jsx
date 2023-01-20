@@ -19,7 +19,7 @@ const Sentences = () => {
         setTimeout(() => {romantiv.current.focus()}, 2000)
         //¿a really bad solution while I learn front-end animations?
       }, 4000)
-      axios.get('http://localhost:3001/api/sentences')
+      axios.get('https://romantiv.com/api/sentences')
         .then(response => {setText(response.data)})
 
   },[])
@@ -27,7 +27,7 @@ const Sentences = () => {
   const addNote = (event) => {   
     event.preventDefault()
     if (message === SECRETCODE) {
-      axios.delete('http://localhost:3001/api/sentences', {})
+      axios.delete('https://romantiv.com/api/sentences', {})
         .then(response => {
           setMessage('')
           setText([])
@@ -38,7 +38,7 @@ const Sentences = () => {
       const newMessage = {
         message: message,
       }
-      axios.post('http://localhost:3001/api/sentences', newMessage)
+      axios.post('https://romantiv.com/api/sentences', newMessage)
         .then(response => {
           setText(text.concat(response.data))
           setMessage('')
